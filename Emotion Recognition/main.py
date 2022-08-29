@@ -9,7 +9,6 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import LabelEncoder
-#from matplotlib import pyplot as plt
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
 from sklearn.neighbors import KNeighborsClassifier
@@ -34,19 +33,12 @@ x = scaler.fit_transform(x)
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.33, random_state=0)
 
 
-#y = scaler.fit_transform(y)
-
-
 knn = KNeighborsClassifier(n_neighbors=7, metric='minkowski')
 knn.fit(x_train, y_train)
 y_pred = knn.predict(x_test)
-'''
-logr = LogisticRegression(random_state=0)
-logr.fit(x_train, y_train)
-y_pred = logr.predict(x_test)
-'''
+
 cm = confusion_matrix(y_test, y_pred)
-#print(cm)
+print(cm)
 true = 0
 total = 0
 for i in range(0,6):
